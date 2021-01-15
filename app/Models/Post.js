@@ -7,6 +7,9 @@ class Post extends Model {
     user() {
         return this.belongsTo('App/Models/User');
     }
+    tasks() {
+        return this.hasMany('App/Models/Task');
+    }
     
 }
 

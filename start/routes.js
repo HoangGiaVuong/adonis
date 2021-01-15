@@ -29,9 +29,17 @@ Route.post('/insert_user','UserController.insert_user');
 Route.group(()=>{
   Route.post('auth/register', 'UserController.register');
   Route.post('auth/login', 'UserController.login');
+
   Route.get('posts/project', 'PostController.get_user_post').middleware('auth');
   Route.post('posts/project', 'PostController.create').middleware('auth');
   Route.delete('posts/project/:id', 'PostController.destroy').middleware('auth');
   Route.patch('posts/project/:id', 'PostController.update').middleware('auth');
+
+  Route.post('posts/project/:id/task', 'TaskController.create').middleware('auth');
+  Route.get('posts/project/:id/task', 'TaskController.index').middleware('auth');
+
+  Route.delete('project/:id/task', 'TaskController.destroy').middleware('auth');
+  Route.patch('project/:id/task', 'TaskController.update').middleware('auth');
+
 })
   .prefix('api');
